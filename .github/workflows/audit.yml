@@ -1,0 +1,35 @@
+name: Auditoría de Calidad
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: Ejecutar auditoría automatizada
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ejecutar auditoría
+        run: python scripts/audit_tool.py
+
+      - name: Mostrar resultado
+        run: cat AUDITORIA_INFORME.md
+
+      - name: Subir AUDITORIA_INFORME.md como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-informe
+          path: AUDITORIA_INFORME.md
