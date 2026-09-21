@@ -1,0 +1,107 @@
+# Lista de Verificación, Sistema de Insignias y Auditoría Automatizada (Grupo 7)
+
+## Adaptación de MoProSoft a GitHub para el proyecto de trazabilidad textil (TisaaSavi)
+
+![Insignia](https://img.shields.io/badge/Auditoría-Ver_AUDITORIA__INFORME.md-blue?style=for-the-badge&logo=github)
+![MoProSoft](https://img.shields.io/badge/MoProSoft-Adaptado-2e7d32?style=for-the-badge)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-purple?style=for-the-badge)
+
+> **Institución:** Instituto Tecnológico de Tlaxiaco (TecNM)
+> **Carrera:** Ingeniería en Sistemas Computacionales
+> **Asignatura:** Gestión de Proyectos de Software
+> **Tema:** 2.5 Estándares Básicos de Control de Cambios y Auditoría de Configuración
+> **Equipo evaluado:** Grupo 7
+> **Repositorio oficial:** `gestion-de-proyectos-de-software-plantilla-plan-de-calidad-group-7`
+
+---
+
+## Resumen y propósito del repositorio
+
+Este repositorio contiene la solución para el Tema 2.5 (Control de Cambios y Auditoría de Configuración), aplicada al proyecto de trazabilidad textil para vendedores-tejedores de Santo Tomás Ocotepec (backlog: HU-01 Autenticación OTP, HU-02 Registro offline, HU-03 Certificación en Testnet, HU-04 Consulta pública por QR, HU-05 Retribución con CLABE cifrada).
+
+La herramienta adapta MoProSoft (categorías Operación y Gerencia) a primitivas reales de GitHub — plantillas de Pull Request e Issue, un workflow de GitHub Actions y un motor de auditoría en Python — considerando de forma explícita la conectividad limitada e intermitente de la región Mixteca y la protección de los datos de pago (CLABE) de las tejedoras.
+
+```
++--------------------------------------------------------------------------------------------------+
+|                     ARQUITECTURA DE AUDITORÍA Y CONTROL DE CAMBIOS — GRUPO 7                     |
+|                                                                                                    |
+|   [Desarrollador]                    [Revisión de pares]                  [Pipeline CI]           |
+|         |                                     |                                |                 |
+|         v                                     v                                v                 |
+|  +------------------+          +---------------------------+          +-------------------+      |
+|  | Conventional      | -------> | Pull Request con          | -------> | GitHub Actions    |      |
+|  | Commit + rama      |          | Checklist Tema 2.5         |          | audit.yml         |      |
+|  +------------------+          +---------------------------+          +-------------------+      |
+|                                              |                                  |                 |
+|                                              v                                  v                 |
+|                                   +----------------------------------------------------+           |
+|                                   |               MOTOR DE AUDITORÍA                   |           |
+|                                   |              scripts/audit_tool.py                 |           |
+|                                   | - Revisa documentación, estructura, Git, seguridad |           |
+|                                   | - Verifica offline-first (HU-02) y CLABE (HU-05)   |           |
+|                                   | - Genera AUDITORIA_INFORME.md                      |           |
+|                                   | - Asigna insignia: 🥉 Bronce / 🥈 Plata / 🥇 Oro    |           |
+|                                   +----------------------------------------------------+           |
++--------------------------------------------------------------------------------------------------+
+```
+
+---
+
+## Cobertura de la rúbrica de evaluación
+
+| Criterio / Indicador de alcance | Ponderación | Documento clave | Cómo se cumple |
+|---|---|---|---|
+| **Indicador C — Creatividad y propuesta del sistema de insignias y auditoría** | 50% | [`docs/SISTEMA_INSIGNIAS.md`](docs/SISTEMA_INSIGNIAS.md), [`docs/LISTA_DE_VERIFICACION.md`](docs/LISTA_DE_VERIFICACION.md), [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) | Checklist por fases (CK-1.x a CK-4.x) ligada a las 5 historias reales del backlog, con insignias alineadas a las bandas oficiales de desempeño del TecNM |
+| **Indicador A — Adaptación a situaciones y contextos complejos** | 25% | [`docs/ADAPTACION_MOPROSOFT.md`](docs/ADAPTACION_MOPROSOFT.md), [`scripts/audit_tool.py`](scripts/audit_tool.py), [`.github/workflows/audit.yml`](.github/workflows/audit.yml) | Traducción de MoProSoft a GitHub, con verificaciones automáticas de conectividad limitada (offline-first) y protección de datos de pago (CLABE) |
+| **Indicadores E y F — Integración interdisciplinaria y trabajo autónomo** | 25% | [`AUDITORIA_INFORME.md`](AUDITORIA_INFORME.md) | El motor de auditoría se ejecuta de forma autónoma sobre el propio repositorio; el resultado real (no simulado) queda documentado con honestidad académica |
+
+---
+
+## Estructura del repositorio
+
+```
+.
+├── .github/
+│   ├── workflows/
+│   │   └── audit.yml                  # Pipeline de CI que ejecuta la auditoría
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md              # Plantilla de reporte de defectos
+│   │   └── feature_request.md         # Plantilla de historia de usuario
+│   └── PULL_REQUEST_TEMPLATE.md       # Checklist de control de cambios (Tema 2.5)
+├── docs/
+│   ├── SISTEMA_INSIGNIAS.md           # Especificación de insignias Bronce/Plata/Oro
+│   ├── ADAPTACION_MOPROSOFT.md        # Adaptación de MoProSoft a GitHub
+│   └── LISTA_DE_VERIFICACION.md       # Checklist maestra en 4 fases
+├── scripts/
+│   └── audit_tool.py                  # Motor de auditoría automatizada (Python)
+├── AUDITORIA_INFORME.md               # Resultado real, generado por el script
+├── LICENSE                            # Licencia MIT
+└── README.md                          # Este archivo
+```
+
+---
+
+## Ejecución local de la auditoría
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/SistemasTecTlaxiaco/gestion-de-proyectos-de-software-plantilla-plan-de-calidad-group-7.git
+cd gestion-de-proyectos-de-software-plantilla-plan-de-calidad-group-7
+
+# 2. Ejecutar la auditoría (Python 3)
+python scripts/audit_tool.py
+
+# 3. Consultar el dictamen generado
+cat AUDITORIA_INFORME.md
+```
+
+El workflow `.github/workflows/audit.yml` ejecuta este mismo script automáticamente en cada `push` y cada Pull Request contra `main`.
+
+---
+
+## Créditos institucionales
+
+- **Instituto:** Instituto Tecnológico de Tlaxiaco (TecNM)
+- **Materia:** Gestión de Proyectos de Software
+- **Equipo:** Grupo 7
+- **Ubicación:** Heroica Ciudad de Tlaxiaco, Oaxaca, México
