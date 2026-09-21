@@ -21,28 +21,16 @@ Este repositorio contiene la solución para el Tema 2.5 (Control de Cambios y Au
 
 La herramienta adapta MoProSoft (categorías Operación y Gerencia) a primitivas reales de GitHub — plantillas de Pull Request e Issue, un workflow de GitHub Actions y un motor de auditoría en Python — considerando de forma explícita la conectividad limitada e intermitente de la región Mixteca y la protección de los datos de pago (CLABE) de las tejedoras.
 
-+--------------------------------------------------------------------------------------------------+
-| ARQUITECTURA DE AUDITORÍA Y CONTROL DE CAMBIOS — GRUPO 7 |
-| |
-| [Desarrollador] [Revisión de pares] [Pipeline CI] |
-| | | | |
-| v v v |
-| +------------------+ +---------------------------+ +-------------------+ |
-| | Conventional | -------> | Pull Request con | -------> | GitHub Actions | |
-| | Commit + rama | | Checklist Tema 2.5 | | audit.yml | |
-| +------------------+ +---------------------------+ +-------------------+ |
-| | | |
-| v v |
-| +----------------------------------------------------+ |
-| | MOTOR DE AUDITORÍA | |
-| | scripts/audit_tool.py | |
-| | - Revisa documentación, estructura, Git, seguridad | |
-| | - Verifica offline-first (HU-02) y CLABE (HU-05) | |
-| | - Genera AUDITORIA_INFORME.md | |
-| | - Asigna insignia: 🥉 Bronce / 🥈 Plata / 🥇 Oro | |
-| +----------------------------------------------------+ |
-+--------------------------------------------------------------------------------------------------+
-
+```mermaid
+flowchart LR
+    A["Desarrollador<br/>Conventional Commit + rama"] --> B["Pull Request<br/>Checklist Tema 2.5"]
+    B -->|"Revisión de pares"| C["GitHub Actions<br/>audit.yml"]
+    C --> D["Motor de Auditoría<br/>scripts/audit_tool.py"]
+    D --> E1["Revisa documentación,<br/>estructura, Git, seguridad"]
+    D --> E2["Verifica offline-first (HU-02)<br/>y CLABE cifrada (HU-05)"]
+    D --> E3["Genera<br/>AUDITORIA_INFORME.md"]
+    D --> E4["Asigna insignia:<br/>🥉 Bronce / 🥈 Plata / 🥇 Oro"]
+```
 
 ---
 
