@@ -60,24 +60,25 @@ flowchart LR
 
 ## Estructura del repositorio
 
+```text
 .
 ├── .github/
-│ ├── workflows/
-│ │ └── audit.yml # Pipeline de CI que ejecuta la auditoría
-│ ├── ISSUE_TEMPLATE/
-│ │ ├── bug_report.md # Plantilla de reporte de defectos
-│ │ └── feature_request.md # Plantilla de historia de usuario
-│ └── PULL_REQUEST_TEMPLATE.md # Checklist de control de cambios (Tema 2.5)
+│   ├── workflows/
+│   │   └── audit.yml                # Pipeline de CI que ejecuta la auditoría
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md            # Plantilla de reporte de defectos
+│   │   └── feature_request.md       # Plantilla de historia de usuario
+│   └── PULL_REQUEST_TEMPLATE.md     # Checklist de control de cambios (Tema 2.5)
 ├── docs/
-│ ├── SISTEMA_INSIGNIAS.md # Especificación de insignias Bronce/Plata/Oro
-│ ├── ADAPTACION_MOPROSOFT.md # Adaptación de MoProSoft a GitHub
-│ └── LISTA_DE_VERIFICACION.md # Checklist maestra en 4 fases
+│   ├── SISTEMA_INSIGNIAS.md         # Especificación de insignias Bronce/Plata/Oro
+│   ├── ADAPTACION_MOPROSOFT.md      # Adaptación de MoProSoft a GitHub
+│   └── LISTA_DE_VERIFICACION.md     # Checklist maestra en 4 fases
 ├── scripts/
-│ └── audit_tool.py # Motor de auditoría automatizada (Python)
-├── AUDITORIA_INFORME.md # Resultado real, generado por el script
-├── LICENSE # Licencia MIT
-└── README.md # Este archivo
-
+│   └── audit_tool.py                # Motor de auditoría automatizada (Python)
+├── AUDITORIA_INFORME.md             # Resultado real, generado por el script
+├── LICENSE                          # Licencia MIT
+└── README.md                        # Este archivo
+```
 
 ---
 
